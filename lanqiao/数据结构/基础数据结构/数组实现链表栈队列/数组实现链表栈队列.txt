@@ -1,0 +1,45 @@
+用数组实现链表
++   单链表
+    用 e数组表示下一个节点
++   int e[N] 用于指明连接方式，e[i]表示地址为i的节点的下一个结点的地址
+    int data[N] 用于指明数据
+    tail 表示尾结点
+    head 表示头结点
+    idx 表示当前已用的内存空间
+    用 -1 表示空结点
++   插入结点到尾部
+    e[tail] = ++idx;
+    e[idx] = -1;
+    data[idx] = val;
+    tail = idx;
++   插入地址adr后
+    e[++idx] = e[adr];
+    e[adr] = idx;
+    data[idx] = val;
++   将adr后面的节点删除(adr要不为tail结点)
+    e[adr] = e[e[adr]];
++   双链表
+    用 e数组表示下一个节点
+    用 p数组表示上一个节点
+
+栈
++   int stk[N];
+    int top = 0;
++   新增元素
+    stk[++top] = x;
++   删除元素
+    top --;
++   判断栈是否为空
+    top == 0;
+
+队列
++   int q[N];
+    int hh = 1;
+    int tt = 0;
+    有效元素的区间为 [hh,tt];
++   入队
+    q[++hh] = x;
++   出队
+    tt ++;
++   判断栈是否为空
+    tt - hh == 0;

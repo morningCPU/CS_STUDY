@@ -1,0 +1,30 @@
+git config --global user.email "email" 初始化邮箱（注意--global global前不能有空格）
+git config --global user.name "name" 初始化姓名
+git branch 创建分支
+git switch [分支名] 移动到另一个分支
+git checkout -b [新分支名] 创建一个新分支并移动到那个分支
+git merge [要合并到现在分支的分支名] 合并分支
+git rebase [将当前分支要合并到的分支的分支名] 合并分支（和merge相反）
+git checkout [记录的哈希值] 移动到指定记录
+git ckeckout [分支名或哈希值]^ 移动到指定位置的上一个位置（^^为上两个……）
+git ckeckout [相对位置]~[数字] 相对位置
+git branch -f [要移动的分支的名字] [位置] 移动分支位置
+git reset [撤回位置] 本地撤回
+git revert [撤回位置] 远端撤回
+git cherry-pick [需要复制的数据的哈希码] 复制
+git rebase -i [停止位置（不包括）] 修改分支
+git commit --amend 修改提交信息
+git tag [标签名] [位置] 打标签
+git describe [开始位置] 查找最近的标签（输出为：标签名_与开始位置相隔的提交记录数_开始位置的哈希值）
+git checkout [开始位置]^[数字] 选择父分支
+git clone 克隆
+git fetch 下载远程仓库内容
+git pull 更新本地内容
+
+git remote -v 查看关联的远程仓库
+git status 查看当前状态
+git add [文件名]
+git reset -- 撤销添加到暂存区的操作
+git config -l 查看配置
+git echo '内容' > 文件
+git branch [name] 创建分支

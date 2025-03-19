@@ -1,0 +1,24 @@
+vector
++   包含在头文件 <vector> 中
++   动态数组容器，用于存储一系列相同类型的元素
++   vector<类型> 变量名
++   可以用 at() 进行访问
++   push_back 在末尾添加元素
++   pop_back 删除末尾元素
++   insert() 在指定位置插入元素
++   erase() 删除指定位置元素
++   size() 获取 vector 中元素的数量
++   empty() 检查 vector 是否为空
++   resize() 调整 vector 的大小
++   clear() 清空向量
++   迭代器:
+        begin() 返回开始位置指针
+        end() 返回末尾位置之后一个位置的指针
++   vector 排序去重
+    sort(num.begin(), num.end());
+    auto temp = unique(num.begin(), num.end());
+    num.erase(temp, num.end());
+    (要先进行排序，再用 unique 将重复内容移动到末尾，unique指向第一个重复元素,最后用erase去除末尾重复元素)
+    优化：（将第二句与第三句合并）
+    sort(num.begin(),num.end());
+    num.erase(unique(num.begin(),num.end()),num.end());

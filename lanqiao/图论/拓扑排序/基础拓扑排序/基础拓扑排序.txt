@@ -1,0 +1,41 @@
+拓扑排序是一种针对"有向无环图"的算法
++   拓扑排序保证了当处理到某个点时，其所有的入点都已经处理过了
++   拓扑排序不一定是唯一的
++   拓扑排序算法
+    拓扑排序一般借助queue,使用类似bfs实现
+    图一般用邻接表实现
+    void topo()
+    {
+        queue<int> q;
+        for(int i = 1;i<=n;++i)
+            if(!ind[i]q.push(i));
+        while(q.size())
+        {
+            int x = q.front();q.pop();
+            for(const auto &y : g[x])
+            {
+                ind[y]--;
+                if(!ind[y]q.push(y));
+            }
+        }
+    }
+    
++   拓扑和动态规划的结合
+    void topo()
+    {
+        queue<int> q;
+        for(int i = 1;i <= n;++i)
+            if(!ind[i])q.push(i);
+        while(q.size())
+        {
+            int x = q.front();q.pop();
+            for(const auto &y : g[x])
+            {
+                //处理边x->y
+                //进行状态转移
+                //dp[y] = ...
+                ind[y]--;
+                if(!ind[y]q.push(y));
+            }
+        }
+    }

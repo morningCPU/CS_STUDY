@@ -1,0 +1,8 @@
+stack 栈
++   data.push(x);
++   data.pop();
++   data.top();
++   data.empty();
++   data.size();
++   将一个数组放入，再依次取出可以将数组翻转
++   stack 不能遍历

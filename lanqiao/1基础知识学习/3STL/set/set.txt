@@ -1,0 +1,45 @@
+集合
+1. set 集合
++   用于存储一组唯一的元素
++   set 中的元素默认按照升序进行排列
++   data.insert(x); 插入值为x的元素
++   data.erase(x); 删除值为x的元素
++   data.find(x); 返回值为x的元素的迭代器
+    没找到的情况返回 data.end()
++   data.lower_bound; 返回第一个 不小于 给定值的迭代器
++   data.upper_bound; 返回第一个 大于 给定值的迭代器
++   data.begin();
++   data.end();
++   data.rbegin(); 返回指向集合末尾的逆向迭代器
++   data.rend(); 返回指向集合开始位置的逆向迭代器
++   data.size();
++   data.empty();
++   data.clear();
++   改变排序的方法：
+    1.方法一：
+    struct Compare
+    {
+        bool operator()(int a, int b)
+        {
+            return a < b;
+        }
+    };
+    set<int, Compare> data;
+    2.方法二：
+    set<int, greater<int>> data;
+
+2. multiset 多重集合
++   允许存储重复元素
++   data.erase(2) 会删除所有的2
++   只删除一个数的方法（放入迭代器）:
+    data.erase(data.find(2));
++   data.count(2);
+
+3. unordered_set 无序集合
++   用于存储一组唯一的元素，但没有特定的顺序
++   功能的时间复杂度是 O(1) （基于哈希存储）
++   data.insert(x);
++   data.erase(x);
++   data.find(x);
++   data.count(x);
++   data.size();

@@ -1,0 +1,32 @@
++   string库 : #include<string.h>
++   str.substr(0,5) str的子串，开始位置为0，长度为5，如果第二个数省略则到末尾
++   string 的初始化
+    1.空字符串
+        string s;
+    2.使用字符串字面量
+        string s = "Hello World";
+    3.赋值
+        string s = s0;
+    4.使用部分字符串
+        string s = s0.substr(0,5);
+    5.使用字符串数组
+        const char *s0 = "Hello World";
+        string s(s0);
+    6.重复字符
+        string s(5,'A'); (对字符串不适用)
++   将string类型转换成字符串数组类型 s.c_str();
++   获取字符串长度 s.length()
++   拼接字符串 + 或者 append
+    s = s1 + 'a' + s2;
+    s = s1.append(",").append(s2);
+    ！注意：append 里面要是字符串，不能是单个字符
++   查找字符串的位置 find
+    s.find("world"); //返回类型 ： size_t(无符号整数类型)
++   字符串替换 replace
+    s.replace(5,5,"replacething")
+    第一个参数为替换开始的位置，第二个参数为替换的个数，第三个参数为替换的内容
++   string 字符串可以直接进行比较
++   string 的遍历
+    1.直接遍历
+    2.auto
++   将数字转换为 string  :  s = to_string(num);

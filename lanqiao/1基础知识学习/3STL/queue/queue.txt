@@ -1,0 +1,42 @@
+1. queue 队列
++   data.push(x); O(1)
++   data.pop(); O(1)
++   data.front();
++   data.back();
++   data.empty();
++   data.size();
+
+2. priority_queue 优先队列 (堆)
++   默认情况下，priority_queue 按照元素的值从大到小进行排序
++   data.push(x) O(logN);
++   data.pop() O(logN);   
++   data.top();
++   data.empty();
++   data.size();
++   修改比较函数:
+    1.方法一
+    struct Compare{
+        bool operator()(int a, int b)
+        {
+            return a > b;
+        }
+    };
+    priority_queue<int, vector<int>, Compare> data;
+    2.方法二
+    用 greater (要包含 <functional> 头文件)
+    priority_queue<int, vector<int>, greater<int>> data;
+
+3. deque 双端队列
++   允许在两端进行操作
++   data.push_back(x);
++   data.push_front();
++   data.pop_back();
++   data.pop_front();
++   data.front();
++   data.back();
++   data.empty();
++   data.size();
++   data.clear();
++   data.insert(pox,x);
++   data.erase(pox);
++   data.erase(first,latst);

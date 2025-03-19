@@ -1,0 +1,90 @@
+向量
++   struct Point{
+        double x,y;
+    }
+    struct Vector{
+        doubel x,y;
+        Vector(double x,double y)
+        {
+            this->x = x,this ->y = y;
+        }
+        Vector(Point u,Point v){
+            this -> x = v.x - u.x;
+            this -> y = v.y - u.y;
+        }
+        Vector operator + (const Vector &u){
+            return Vector(x + u.x  , y + u.y);
+        }
+        Vector operator - (const Vector &u){
+            return Vector(x - u.x , y - u.y);
+        }
+        Vector operator * (const double k){
+            return Vector(x * k , y* k);
+        }
+        double operator * (const Vector &u){
+            return x*u.x + y*u.y;
+        }
+        //向量叉乘
+        double operator ^ (const Vector &u){
+            return x * u.y - u.x * y;
+        }
+        double abs(){
+            return sqrt(x*x + y*y);
+        }
+        Vector norm()
+        {
+            return *this * (1/abs());
+        }
+    };
+
+直线
++   struct Line{
+        Point u,v;
+        Line(Point u,Point v){
+            this ->u = u;
+            this -> v = v;
+        }
+        doubel pointDist(const Point &t){
+            Vector ut(u,t),uv(u,v);
+            return fabs(ut^uv)/uv.abs();
+        }
+        //判断与直线的关系,0平行,1相交
+        int parallel(const Line &t){
+            Vector A(u,v),B(t.u,t.v);
+            if(fabs(0 - (A ^ B)) <= eps)return 0;
+            return 1;
+        }
+        int relationPoint(Point t)
+        {
+            Vector uv(u,v),ut(u,t);
+            double tmp = uv ^ ut;
+            if(fabs(tmp) <= eps)return 0;
+            if(tmp > 0)return 1;
+            return -1;
+        }
+    };
+
+线段
++   struct Seg{
+        Point u,v;
+        Seg(Point u,Point v)
+        {
+            this->u = u;
+            this->v = v;
+        }
+        bool pointOnSeg(Point t){
+            Vector tu(t,u),tv(t,v);
+            return fabs(tu*tv + tu.abs() * tv.abs()) <= eps;
+        }
+        //判断线段之间的关系，0不相交，1不规范相交，2规范相交
+        int relationSeg(Seg s)
+        {
+            if(this -> pointOnSeg(s.u) || this -> pointOnSeg(s.v) || s.pointOnSeg(u) || s.pointOnSeg(v))return 1;
+            int d1 = Line(u,v).relationPoint(s.u);
+            int d2 = Line(u,v).relationPoint(s.v);
+            int d3 = Line(s.u,s.v).relationPoint(u);
+            int d4 = Line(s.u,s.v).relationPoint(v);
+            if(d1*d2 < 0 && d3*d4 < 0)return 2;
+            return 0;
+        }
+    };

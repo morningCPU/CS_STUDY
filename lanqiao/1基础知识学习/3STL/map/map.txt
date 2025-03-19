@@ -1,0 +1,29 @@
+map
+1. map
++   一种关联容器，用于存储一组键值对
++   根据键来自动进行排序
++   data.insert({key,value});
+    data.insert(make_pair(key,value))
++   data.erase(key);
++   data.find(key);
++   data.count(key);
++   data.size();
++   data.begin();
++   data.end();
++   data.empty();
++   data.clear();
++   data.lower_bound(key);
++   data.upper_bound(key);
++   访问 ：cout << data[key];
++   遍历：
+    for(auto [a,b] : data)
+    {
+        cout << a << b << '\n';
+    }
+
+2. multimap
++   可以有多个相同的键
++   data.equal_range(key);
+
+3. unordered_map
++   

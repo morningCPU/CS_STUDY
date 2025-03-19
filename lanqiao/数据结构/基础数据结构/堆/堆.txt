@@ -1,0 +1,54 @@
+优先队列
++   priority_queue<int> q;
++   其实优先队列就是一个堆，它可以维护一个集合的最大值或最小值
+
+手写堆
++   采用数组的方式来存储数据
+    利用二叉树的性质，2x 表示 x 的左孩子，2x+1 表示 x 的右孩子
++   用 sz 表示结点的数量，a[x] 表示结点 x 的权值
++   所需函数
+    1.pushup()
+    2.pushdown
+    3.push()
+    4.pop()
++   pushup(int sz)
+    void pushup(int x)
+    {
+        while(x != 1)
+        {
+            if(a[x] > a[x >> 1])swap(a[x],a[x >> 1]),x >>= 1;
+            else break;
+        }
+    }
++   pushdown(int x)
+    pushdown(int x)
+    {
+        if((x << 1) > sz)return;
+        if((x << 1 | 1) > sz)
+        {
+            swap(a[x] ,a[x << 1]);
+            pushdown(x << 1);
+        }else{
+            if(a[x] == max({a[x] ,a[x<<1],a[x << 1] | 1}))return;
+            if(a[x<<1] > a[x << 1] | 1)
+            {
+                swap(a[x] ,a[x << 1]);
+                pushdown(x << 1);
+            }else{
+                swap(a[x] ,a[x << 1 | 1]);
+                pushdown(x << 1 | 1);
+            }
+        }
+    }
++   push(int x)
+    void push(int x)
+    {
+        a[++sz] = x;
+        pushup(sz);
+    }
++   pop()
+    void pop()
+    {
+        a[1] = a[sz--];
+        pushdown(1);
+    }

@@ -1,0 +1,24 @@
+DP 法求组合数
++   C(n,m) = C(n-1,m-1) + C(n-1,m);
+    C(i,0) = 1;
++   这种方法只能处理较小范围的组合数，一般 n * m < 1e7
+
+预处理阶乘法求组合数
++   C(n,m) = n!/(n-m)!/m!
++   一般仅适用于对结果对质数取模的情况
++   算法：
+    ll C(ll n,ll m)
+    {
+        if(n < 0 || m < 0 || n < m )return 0;
+        return f[n]*inv(f[n-1]*f[m]%p)%p;
+    }
++   优化：
+    一开始就预处理出阶乘的逆元
+    先用费马小定理求出invf[n]
+    于是 invf[i] = (i+1)*invf[i+1];
+    于是算法优化为：
+    ll C(ll n,ll m)
+    {
+        if(n < 0 || m > n || m < 0)return 0;
+        return f[n]*invf[n-m]%p*invf[m]%p;
+    }

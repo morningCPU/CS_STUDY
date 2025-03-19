@@ -1,0 +1,20 @@
+启发式算法
++   一类用于解决优化问题的算法
++   启发式合并就是每次将较小的集合合并到较大的集合中
++   初始化
+    增加了一个新的量：联通快的大小 int siz[N];
+    for(int i = 1;i<=n;++i)pre[i] = i,siz[i] = 1;
++   找根函数
+    int root(int x)
+    {
+        return pre[x] == x ? x : root(pre[x]);
+    }
++   合并函数
+    void merge(int x,int y)
+    {
+        int rx = root(x),ry = root(y);
+        if(rx == ry)return;
+        if(siz[rx] > siz[ry])swap(rx,ry);
+        pre[rx] = ry;
+        siz[ry] += siz[rx];
+    }

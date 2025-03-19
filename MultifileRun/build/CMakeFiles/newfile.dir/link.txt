@@ -1,0 +1,3 @@
+D:\CMake\bin\cmake.exe -E rm -f CMakeFiles\newfile.dir/objects.a
+D:\Mg\mingw64\bin\ar.exe qc CMakeFiles\newfile.dir/objects.a @CMakeFiles\newfile.dir\objects1.rsp
+D:\Mg\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\newfile.dir/objects.a -Wl,--no-whole-archive -o newfile.exe -Wl,--out-implib,libnewfile.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\newfile.dir\linkLibs.rsp

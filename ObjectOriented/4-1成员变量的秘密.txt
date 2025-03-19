@@ -1,0 +1,19 @@
++   参数和本地变量属性基本相同
++   对 A a 进行解读
+    class A
+    {
+    public:
+        int i;
+        void f();
+    };
+    其中所有的函数是属于类的,而变量是属于对象的
++   所有的成员变量有一个隐藏变量 this
+    this 是一个指向当前对象的指针 
+    它的类型是 类名* const
+    例如：
+        void Point::init(int x, int y)
+        {
+            this->x = x;
+            this->y = y;
+        }
+        结果是形参 x 赋值给了对象的成员变量 x 

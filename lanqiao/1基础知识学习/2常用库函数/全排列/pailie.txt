@@ -1,0 +1,6 @@
+全排列
++   要包含头文件 <algorithm>
++   next_permutation(st,ed)
+    生成当前序列的下一个排列(有会返回true,没有会回到第一个排列并返回false)
++   prev_permutation(st,ed)
+    生成上一个

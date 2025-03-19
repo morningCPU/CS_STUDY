@@ -1,0 +1,26 @@
+扩展欧几里得
++   也叫做辗转相除法
++   可以用于求解不定方程 ax + by = c 的解集
++   算法
+    using ll = long long;
+    ll exgcd (ll a,ll b,ll &x,ll &y)
+    {
+        if(!b)
+        {
+            x = 1, y = 0;
+            return a;
+        }
+        ll d = exgcd(b,a%b,y,x);
+        y -= a/b*x;
+        return d;
+    }
+    输出结果：ax + by = d;(输出了特解,并且和是d而不是c)
+    x0 = x*(c/d);y0 = y*(c/d)
++   解集
+    x = x0 + k(b/d);
+    y = y0 - k(a/d);
++   x 的最小非负数整数解一定是 x0%(b/d)
+    设x2为最小非负数整数解；
+      x0为ecgcd结果
+    x2 = x0*(c/d)%(b/d);
+    y = (c - a*x)/b;

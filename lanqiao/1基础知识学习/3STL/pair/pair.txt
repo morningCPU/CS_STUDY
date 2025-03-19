@@ -1,0 +1,9 @@
+pair
++   包含在头文件 <utility> 
++   用于表示一对值的组合
++   pair <第一个数据的类型 , 第二个数据的类型> 名字 (第一个数据的值 , 第二个数据的值)  
++   pair <int , double> p1 (1 , 3.14)
++   调用 p1.first , p1.second
++   pair 可以嵌套pair
++   pair<int, pair<int, int>> p1(1, make_pair(2, 3)); (make_pair 用于快速构造pair类型)
++   pair 先比较 first 中的内容

@@ -1,0 +1,19 @@
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: red;
+}
+
+a:hover {
+    color: gray;
+}
+
+a:active {
+    color: gold;
+}
+
+input:focus {
+    background-color: rgb(211, 116, 116);
+}

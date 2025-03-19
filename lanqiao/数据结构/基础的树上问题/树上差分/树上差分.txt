@@ -1,0 +1,5 @@
+前缀和与差分
++   前缀和 prefix[i] = prefix[i - 1] + a[i];
++   差分   diff[i] = a[i] - a[i-1];
+           a[i] = a[i-1] + diff[i];
+

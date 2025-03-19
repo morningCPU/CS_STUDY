@@ -1,0 +1,8 @@
+Linux 简介
+
+Linux 内核
++   下载地址 https://www.kernel.org
+
+Linux 发行版
++   内核 + 系统级程序
++   主要用 CentOS 、Ubuntu

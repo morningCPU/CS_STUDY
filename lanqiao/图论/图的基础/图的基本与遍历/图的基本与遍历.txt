@@ -1,0 +1,37 @@
+图的基本概念
+
+图的存储方法
++   邻接表
+    vector<pair<int,int>> g[N];
+    g[x]存放 x 的所有出点的信息
++   邻接矩阵
+    d[i][j]
+
+图的遍历
++   DFS遍历
+    bitset<N> vis;
+    void dfs(int x)
+    {
+        vis[x] = true;
+        for(const auto &y : g[x])
+        {
+            if(vis[y])continue;
+            dfs(y);
+        }
+    }
+
++   BFS遍历
+    一般通过队列实现
+    BFS通常用于求边权相等情况下的最短距离
+    bitset<N> vis;
+    queue<int> q;
+    q.push(x);
+    while(!q.empty())
+    {
+        int x = q.front();
+        q.pop();
+        if(vis[x])continue;
+        vis[x] = true;
+        for(const auto &y : g[x])
+            q.push(y);
+    }

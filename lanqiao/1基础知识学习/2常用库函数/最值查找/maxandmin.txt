@@ -1,0 +1,13 @@
+要包含 <algorithm> 库
++   min :
+    min(1,2) (参数是 long long 类型) O(1) 
+    min({1,2,3,4,5}) 可以传入列表 O(n)
++   max:
+    max(1,2) O(1)
+    max({1,2,3,4,5}) 可以传入列表 O(n)
++   min_element(st,ed) st 和 ed 为开始和结束的位置的指针
+    返回值是最小值的地址
++   max_element(st,ed)
+    返回值是最大值的地址
++   nth_element(st,k,ed)  (返回 void() ) (这三个参数都是指针或迭代器)
+    这个数前后都是没有顺序的，但前面的都比它小，后面的都比它大，进行了部分排序

@@ -1,0 +1,20 @@
+其他库函数
++   memset()
+    要包含头文件 <cstring>
+    void* memset(void* ptr,int value,size_t num);
+    设置内存块的值，将ptr指向的内存块的前num个字节设置为value的值
+    int arr[10];
+    memset(arr,0,sizeof(arr));
+    注意：memset对字节(8bit)进行赋值,所以对非字符类型的数组可能会出现未定义的行为
++   swap()
+    要包含头文件 <algorithm>
+    swap(int &a,int &b)；
+    交换
++   reverse()
+    要包含头文件 <algorithm>
+    用于反转容器中的元素顺序
+    reverse(data.begin(),data.end());
++   unique()
+    要包含头文件 <algorithm>
+    用于去除相邻重复元素的函数 ()
+    unique(data.begin(),data.end());

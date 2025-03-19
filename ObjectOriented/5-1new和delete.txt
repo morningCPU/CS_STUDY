@@ -1,0 +1,13 @@
+动态内存分配
++   new
+    new int;
+    new Stash;
+    new int[10];
++   delete
+    delete p;
+    delete[] p;
+    如果不带[],分配的空间都会回收，但只有一个位置会调用析构函数
++   example:
+    int *psome = new int [10];
+    delete [] psome;
++   动态内存分配信息会存在一个表中

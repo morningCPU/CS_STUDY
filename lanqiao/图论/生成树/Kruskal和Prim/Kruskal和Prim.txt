@@ -1,0 +1,74 @@
+最小生成树
++   MST
+
+Kruskal算法
++   struct Edge
+    {
+        int x,y,c;
+        bool operator < (const Edge &u)const
+        {
+            return c < u.c;
+        }
+    };
+    int pre[N];
+    int root(int x)
+    {
+        return pre[x] = (pre[x] == x ? x : root(pre[x]));
+    }
+    void solve()
+    {
+        int n,m;cin >> n >> m;
+        vector<Edge> es;
+        for(int i = 1;i<=m;++i)
+        {
+            int x,y,c;cin >> x >> y >> c;
+            es.push_back({x,y,c});
+        }
+        sort(es.begin(),es.end());
+        for(int i = 1;i<=n;++i)pre[i] = i;
+        int ans = 0;
+        for(const auto &i:es)
+        {
+            if(root(i.x) == root(i.y))continue;
+            ans = max(ans,i.c);
+            pre[root(x)] = root(y);
+        }
+        cout << ans << '\n';
+    }
+
+Prime算法
++   prime算法采用集合的思想，维护一个mst集合，里面存储已经在最小生成树中的点
++   struct Edge
+    {
+        ll x,c;
+        bool operator<(const Edge &u)const
+        {
+            return c == u.c ? x > u.x : c > u.c;
+        }
+    }
+    vector<Edge> g[N];
+    ll d[N];
+    int n,m;
+    int prim()
+    {
+        priority_queue(Edge) pq;
+        bitset<N> vis;
+        d[1] = 0;
+        pq.push({i.d[i]});
+
+        ll res = 0;
+        while(pq.size())
+        {
+            int x = pq.top().x;pq.pop();
+            if(vis[x])continue;
+            vis[x] = true;
+            res = max(res,d[x]);
+            for(const auto &i : g[x])
+            {
+                if(vis[i.x])continue;
+                d[i.x] = min(d[i.x],i.c);
+                pq.push({i.x,d[i.x]});
+            }
+        }
+        return res;
+    }
