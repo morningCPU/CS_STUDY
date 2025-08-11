@@ -1,0 +1,27 @@
+朴素字符串查找
++   给n个字符串s1~sn,再给一个字符串t，查找t是否在s出现过
++   字典树 Trie树
++   字典树的建立
+    int nex[N][27];//nex[i][0]表示从节点i出发，边为a的下一个节点的节点地址
+    int cnt[N];//cnt[i] 表示以节点i结尾的字符串数量
+    int idx = 2;//内存池，用于动态开点
++   编写insert函数用于将一个字符串s插入Trie
+    void insert(char s[])
+    {
+        int n = strlen(s + 1)；
+        int x = 1;
+        for(int i = 1;i<=n;++i)
+        {
+            if(!nex[x][s[i] - 'a'])nex[x][s[i] - 'a'] = idx++;//新建
+            x = nex[x][s[i] - 'a'];
+        }
+        cnt[x]++;
+    }
++   编写check函数用于判断某个字符串在trie中的出现次数
+    int check(char s[])
+    {
+        int n = strlen(s + 1);
+        int x = 1;//开始位置
+        for(int i = 1;i<=n;++i)x = nex[x][s[i] - 'a'];
+        return cnt[x];//cnt[x] = 0 则不存在
+    }

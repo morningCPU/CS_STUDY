@@ -1,0 +1,19 @@
+键盘输入
+Scanner
+使用步骤:
+1.导包 import java.util.Scanner;
+2.创建对象 Scanner scan = new Scanner(System.in);
+3.调用方法
+读取下一个单词 next()
+读取一行 nextLine()
+读取数值:
+nextInt,nextDouble,nextFloat,nextLong,nextByte
+读取布尔值：
+nextBoolean
+4.释放 scan.close();
+
+使用随机数
+Math.random()
+会生成 (0,1) 的double
+
+企业中项目的研发流程

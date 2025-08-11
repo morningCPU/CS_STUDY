@@ -1,0 +1,13 @@
+C++类的成员有三种属性
++   public      公开的
+    private     私有的
+    protected   保护的
++   public      公开的
++   private     私有的
+    只有自己可以用
+    只有这个类的函数可以使用，只有成员函数可以访问
++   protected   保护的
++   friends
+    friend void Y::f(X*);
++   对 class  没有声明属性那默认是 private
+    对 struct 没有声明属性那默认是 public

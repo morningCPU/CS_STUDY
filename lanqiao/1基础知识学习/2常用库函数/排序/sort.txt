@@ -1,0 +1,17 @@
++   sort:
+    包含在头文件 algorithm 中 （#include<algorithm>）
+    使用快速排序，时间复杂度为nlogn
+    格式： sort(起始地址，结束地址的下一位，*比较函数)
+    默认从小到大排序
++   自定义比较函数
+    传入比较函数 ：函数或者lambda表达式 
+    1.函数形式：
+    bool cmp(int a, int b)
+    {
+        return a > b;
+    }
+    sort(num.begin(),num.end(),cmp);
+    2.lambda表达式形式：
+    sort(num.begin(),num.end(),[](int a,int b){
+        return a > b;
+    })

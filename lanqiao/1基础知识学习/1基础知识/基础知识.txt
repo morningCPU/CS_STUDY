@@ -1,0 +1,19 @@
++   通用头文件 #include<bits/stdc++.h>
++   '\n' 比 endl 更快
++   科学计数法 1e5 : 10^5
++   在全局变量里 a[N] 会自动赋初值为0 
+    在局部变量里 a[N] 不会自动赋初值为0
++   正则表达式 %[^\n] 不是回车
++   小数格式化输出 cout<<fixed<<setprecision(2) (要是浮点型数据才有效果，整形数据输出还会是整形)
+    会四舍五入
+    要包含 <iomanip> 头文件
++   读取一整行字符串:
+    string s;
+    getline(cin,s);
++   取消同步流
+    ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
++   常量字符串也可以用 []
+    cout << "Hello"[2];
+    输出的是 e
++   重命名 
+    using ll = long long;

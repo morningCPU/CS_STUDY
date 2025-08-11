@@ -1,0 +1,33 @@
+使用函数
+在Makefile中可以使用函数来处理变量
+
+1. 函数的调用语法
+$(<function> <arguments>)
+或者
+$(<function> <arguments>)
+<function> 为函数名
+<arguments> 为函数的参数
+
++ 字符串处理函数
+subst
+$(subst <from>,<to>,<text>)
+把字串
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

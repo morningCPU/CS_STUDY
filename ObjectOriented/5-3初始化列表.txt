@@ -1,0 +1,13 @@
+初始化列表
+class Point
+{
+    pribate:
+        const float x,y;
+        Point(float xa = 0.0,float ya = 0.0):x(xa),y(ya){
+            ...
+        }
+}
++   可以初始化任何类型的数据
++   这个初始化早于构造函数
++   初始化和赋值
++   类的成员变量都用初始化列表进行初始化

@@ -1,0 +1,3 @@
+IDEA项目结构
+project - module - package - class
+包名一般是公司域名倒着写

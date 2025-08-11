@@ -1,0 +1,19 @@
+并查集
++   并查集是一种图形结构，用于存储图中结点的连通关系
++   每个结点只有一个父结点
+    根节点的父结点是自己
++   找根算法
+    int root (int x)
+    {
+        if(pre[x] == x)return x;
+        return root(pre[x]);
+    }
++   并查集的合并操作
+    在并查集中，所有的操作都在根上
+    pre[root(x)] = root[y];
++   路径压缩
+    在找根的过程中，将结点的父结点直接指向根结点
+    int root(int x)
+    {
+        return pre[x] = (pre[x] = x ? x : root(pre[x]));
+    }

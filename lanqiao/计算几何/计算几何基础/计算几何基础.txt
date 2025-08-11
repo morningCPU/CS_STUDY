@@ -1,0 +1,43 @@
+平面上两点距离
++   欧几里得距离
+    两点直线连线距离
+    d = sqrt((x1 - x2)^2 + (y1 - y2)^2)
+    double dist(double x1,double y1,double x2,double y2)
+    {
+        double dx = x1 - x2,dy = y1 - y2;
+        return sqrt(dx * dx + dy * dy);
+    }
+
++   曼哈顿距离
+    两点的x差值的绝对值与y差值的绝对值之和
+    int dist(int x1,int y1,int x2,int y2)
+    {
+        int dx = abs(x1 - x2),dy = abs(y1 - y2);
+        return dx + dy;
+    }
+
+圆的周长和面积
++   double pi = acos(-1);
++   周长 C = 2 * pi * r;
+    面积 S = pi * r * r;
+
+圆与圆的关系
++   相交 dist < r1 + r2
+    相切 dist == r1 + r2
+         在判断等号时要设定一定的偏移量 eps 以避免浮点误差带来的影响
+         r1 + r2 - eps <= dist && dist <= r1 + r2 + eps;eps = 1e-8
+    相离 dist > r1 + r2
+
+海伦公式
++   用于计算已知三边长的三角形的面积
++   p = (a+b+c)/2;
+    s = sqrt(p(p-a)(p-b)(p-c));
+
+点到直线的距离
++   A(x1,y1),B(x2,y2),C(x3,y3),p(x0,y0)
++   对 Ax+By+C = 0
+    pL = fabs(Ax0 + By0 + C)/sqrt(A^2 + B^2)
+    对 y = kx + b
+    pL = fabs(kx0 - y0 + b)/sqrt(1 + k^2)
++   A到直线BC的距离
+    d = fabs((x2 - x1)*(y3 - y1) - (x3 - x1) * (y2 - y1))/sqrt((x3 - x2)^2 + (y3 - y2)^2)

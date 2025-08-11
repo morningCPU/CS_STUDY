@@ -1,0 +1,113 @@
+书写规则
+规则包含两个部分，一个是依赖关系，一个是生成目标的方法
++ 书写顺序很重要
++ 第一条规则中的目标将被确立为最终的目标
+
+1. 规则举例
+foo.o : foo.c defs.h
+    cc -c -g foo.c
+
+2. 规则的语法
+targets : prerequisites
+    command
+    ...
+或者
+targets : prerequisites ; command
+    command
+    ...
++ 如果命令太长，用 \ 作为换行符
++ make会以UNIX的标准Shell来执行命令
+
+3. 在规则中使用通配符
++ make支持三个通配符: *、? 和 ~
+
+4. 文件搜寻
+通过 VPATH 完成文件搜寻的功能
+如果没有VPATH变量就只会在当前目录寻找文件
+VPATH = src:../headers
+上面的定义指定两个目录 "src" 和 "headers"
++ 目录用 ":" 分隔
+
+通过vpath(全小写)实现
++ vpath是方法，VPATH是变量
++ vpath可以指定不同的文件在不同的搜索目录中
+有三种方法进行使用
+(1) vpath <pattern> <directories>
+为符合模式<pattern>的文件指定搜索目录<directories>
+(2) vpath <pattern>
+清除符合模式<pattern>的文件的搜索目录
+(3) vpath
+清除所有已被设置好了的文件搜索目录
+<pattern>需要包含 "%" 字符,意思是匹配零或若干个字符
++ 例子
+vpath %.h ../headers
+如果当前目录下没有找到文件的话就在../headers中寻找
++ 可以连续使用vpath语句以指定不同搜索策略
+如果连续的vpath语句中出现了相同的<pattern>或者重复的<pattern>那么make会按照vpath
++ 例子
+vpath %.c   foo
+vpath %     blish
+vpath %.c   bar
+
+5. 伪目标
+clean:
+    rm *.o temp
++ 使用一个特殊的标记 .PHONY : clean 用于标记伪目标
+.PHONY : clean
+clean :
+    rm *.o temp
+
+6. 多目标
+使用自动化变量 $@
+这个变量表示目前规则中所有的目标的集合
+bigoutput littleoutput : text.g
+    generate text.g -$(subst output,,$@) > &@
+上述规则等价于
+bigoutput : text.g
+    generate text.g -big > bigoutput
+littleoutput : text.g
+    generate text.g -little > littleoutput
+
+7. 静态模式
+静态模式可以更加容易地定义多目标的规则，可以让我们的规则变得更加有弹性和灵活
+<targets ...> : <target-pattern> : <prereq-patterns>
+    <commands>
+    ...
++ targets定义了一系列目标文件
++ target-pattern指明了targets的模式
++ prereq-patterns是目标的依赖模式
+
+8. 自动生成依赖性
+cc -M main.c
+其输出是:
+main.o : main.c defs.h
++ 使用GNU的C/C++编译器用使用 -MM 参数,不然-M参数会把一些标准库的头文件也包含进来
+为每一个name.c的文件都生成一个name.d的Makefile问阿金
+.d 文件中就存放对应.c文件的依赖关系
++ 给出一个模式规则来产生.d文件
+%.d: %.c
+    @set -e; rm -f $@; \
+    $(CC) -M $(CPPFLAGS) $< > $@.$$$$; \
+    sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
+    rm -f $@.$$$$
+所有的 .d 文件依赖于 .c 文件
+rm -f $@ 的意思是删除所有的目标,也就是.d文件
+$(CC) -M $(CPPFLAGS) $< > $@.$$$$; \
+是为每个依赖文件 %< , 也就是.c文件生成依赖文件,%@ 表示模式%.d文件
+如果有一个C文件是 name.c 那么%就是name，
+$$$$意为一个随机编号
+具体作用:
+将 main.o : main.c defs.h
+转换为 main.o main.d : main.c defs.h
+
+
+
+
+
+
+
+
+
+
+
+

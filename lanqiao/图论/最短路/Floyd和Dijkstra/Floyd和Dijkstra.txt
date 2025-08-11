@@ -1,0 +1,51 @@
+Floyd算法
++   处理多源问题
++   处理稠密图
++   图一般用邻接矩阵存储
++   边权可正可负，但不允许负环
++   int d[N][N][N]
+    d[k][i][j]表示路径(除去起点和终点)中编号最大的点编号<=k的情况下，点i到点j的最短距离
+    可以优化为 d[i][j]
++   算法实现
+    for(int k = 1;k<=n;++k)
+        for(int i = 1;i<=n;++i)
+            for(int j = 1;j<=n;++j)
+                d[i][j] = min(d[i][j],d[i][k]+d[k][j]);
++   时间复杂度较高，一般只能处理 n <= 500 的问题
+
+Dijkstra算法
++   处理单源问题
++   处理稀疏图
++   采用邻接表存储
++   边要不为负
++   int d[N];d[i]表示点i距离源点的最短距离
+    bitset<N> vis
++   struct Node
+    {
+        int x,w;//x表示点编号，w表示源点到x的最短距离
+        bool operator < (const Node &u)const
+        {
+            return w == u.w ? x < u.x : w > u.w;
+        }
+    };
+    priority_queue<Node> pq;
++   void dijkstral(int st)
+    {
+        pq.push({st,d[st] = 0});
+        while(pq.size())
+        {
+            int x = pq.top().x;
+            int w = pq.top().w;
+            pq.pop();
+            if(vis[x])continue;
+            vis[x] = true;
+            for(const auto & [y,dw] : g[x])
+            {
+                if(d[x] + dw < d[y])
+                {
+                    d[y] = d[x] + dw;
+                    pq.push({y.d[y]});
+                }
+            }
+        }
+    }

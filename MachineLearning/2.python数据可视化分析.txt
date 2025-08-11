@@ -1,0 +1,69 @@
+python数据可视化分析
+使用 Pandas、Matplotlib、seaborn等库实现
+Matplotlib实现可视化
+Matplotlib.pyplot是“快捷脚本层”，作用就是给你一堆类似 MATLAB 的命令式函数
+seaborn让图像更加高级
+
+(1) 单变量可视化
+1. 数量特征
+数量特征的值为有序数值。实虚不定，分布不定
++ 直方图
+使用 hist()
+features = ['Total day minutes', 'Total intl calls']
+df[features].hist(figsize=(10, 4))
+需要使用df.show()显示
+10 * 4英寸的图
++ 密度图
+使用plot
+df[features].plot(kind='density', subplots=True, layout=(1, 2),
+                  sharex=False, figsize=(10, 4), legend=False, title=features)
+- kind : 种类,density为密度图
+- subplots ：是否把每一列独立
+- layout(1,2) : 1行2列
+- sharex : 是否共享x轴
+- figsize : 图表大小
+- legend : 是否显示图例
+- title : 标题
+
++ distplot
+seaborn的方法,同时画出直方图和密度图
+sna.distplot(df['Total intl calls'])
+
++ 箱型图
+使用boxplot()
+sns.boxplot(x='Total intl calls',data=df)
+
++ 提琴形图
+使用 violinplot()
+
+2. 数据描述
+discribe()
+df[feature].discribe()
+
+3. 类别特征和二元特征
+
+4. 频率表
+使用 value_counts()
+df['Churn'].value_counts
+
+5. 条形图
+使用 seaborn 的countplot()
+
+6. 多变量可视化
+# 丢弃非数值变量
+numerical = list(set(df.columns) -
+                 set(['State', 'International plan', 'Voice mail plan',
+                      'Area code', 'Churn', 'Customer service calls']))
+# 计算和绘图
+# 计算出每对特征之间的相关性
+corr_matrix = df[numerical].corr()
+# 绘图
+sns.heatmap(corr_matrix)
+
++ 散点图
+- matplotlib的scatter()方法
+plt.scatter(df['Total day minutes'],df['Total night minutes'])
+- seaborn的jointplot()方法
+sns.jointplot(x='Total day minutes',y='Total night minutes',data=df,kind='scatter')
+kind是主题图的形式，scatter就是散点图,kde是平滑形式
+

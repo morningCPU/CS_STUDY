@@ -1,0 +1,20 @@
+用已有的对象组合出新的对象
++   example
+    class Person{};
+    class Currency{};
+    class SavingAccount{
+        public:
+            SavingAccount(const char*name,const char* address,int cents);
+            ~SavingAccount();
+            void print();
+        private:
+            Person m_saver;
+            Currency m_balance;
+    }
+
+    SavintAccount::SavingAccount(const char*name,const char* address,int cents):m_saver(name,address),m_balance(0,cents){}
+
+    void SavingAccount::print(){
+        m_saver.print();
+        m_balance.print();
+    }

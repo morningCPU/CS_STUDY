@@ -1,0 +1,114 @@
+关键字
+
+标识符
+字母，数字，下划线，$
+
+标识符命名规则
++ 包名：全部小写
++ 接口名，类名：单词首字母大写
++ 变量名，方法名：第二个单词开始首字母大写
++ 常量：全部大写，单词之间用 _ 连接
+
+变量
+数据类型，变量名，变量的值
+
+Java中变量的数据类型分为两大类：
++ 基本数据类型 ： 整形，浮点型，字符型，布尔型
+整形:byte,short,int,long
+浮点型:float,double
+字符型:char
+布尔型:boolean
++ 引用数据类型：数组，类，接口，枚举，注释，记录
+数组: []
+类: class
+接口: interface
+枚举: enum
+注释: annotation
+记录: recode
+
+基本数据类型
+整型
++ 类型
+byte,short,int,long
+byte    1Byte
+short   2
+int     4
+long    8
+
+浮点型
++ 类型
+float,double
+float   4   7位有效数字
+double  8   14位
+默认是double
+定义float类型变量加后缀f或F
+浮点数运算有误差，不适合在不容许舍入误差的金融计算领域
+使用BigDecimal类可以精确位数
+
+字符型
+char    2
+使用unicode编码，一个字母，一个汉字都用一个字符
++ 字符变量的三种表现形式
+1. 使用 ' '
+2. 使用 unicode 编码 '\uXXXX'
+3. 转义字符
++ 转义字符
+\n  换行
+\t  制表符
+\b  退格符
+\r  回车符
+
+布尔型
+boolean
+不可以用0或非0替代false和true
+但是在jvm中又用int代替
+
+类型转换
+自动类型转换，强制类型转换
++ 自动类型转换
+byte
+short -> int -> long -> float -> double
+char
+要注意 byte,short,char 之间运算也会变成int
++ 强制类型转换
+注意 int i = 1.1 过不了编译
+int i = (int)1.1
+和C语言一样
+注意 int i = int(1.1) 不行
+
+long l1 = 123L;
+long l2 = 123;//如何理解呢？ 此时可以看做是int类型的123自动类型提升为long类型
+
+//long l3 = 123123123123; //报错，因为123123123123超出了int的范围。
+long l4 = 123123123123L;
+
+
+//float f1 = 12.3; //报错，因为12.3看做是double，不能自动转换为float类型
+float f2 = 12.3F;
+float f3 = (float)12.3;
+
+字符串
+引用数据类型
+String
+
+进制的分类
++ 二进制: 0b/0B
++ 八进制: 0
++ 十进制
++ 十六进制: 0x/0X
+
+交换两个数
+1.  int tmp = a;
+    a = b;
+    b = tmp;
+2.  a = a + b;
+    b = a - b;
+    a = a - b;
+3.  a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+
+条件运算符比if else效率更高
+
+
+

@@ -1,0 +1,7 @@
+list
++   双向链表容器
++   list<数据类型>
++   data.push_front(1);
++   data.push_back(1);
++   data.front() 返回链表第一个元素的引用
++   data.back() 返回链表最后一个元素的引用

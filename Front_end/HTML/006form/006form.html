@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example</title>
+</head>
+
+<body>
+    <h1>青春不常在，抓紧谈恋爱</h1><br />
+    <form action="001.php" name="form" method="get">
+        <table>
+            <tr>
+                <td>性别</td>
+                <td>
+                    <!-- 1 -->
+                    <input type="radio" name="sex" value="man" id="man" checked="checked"><label for="man">
+                        <img src="images/001.jpg" width="23">男</label>
+                    <!-- 2 -->
+                    <input type="radio" name="sex" value="woman" id="woman">
+                    <label for="woman"><img src="images/002.jpg" width="23">女</label>
+                </td>
+            </tr>
+            <tr>
+                <td>生日</td>
+                <td>
+                    <select name="年">
+                        <option value="请选择年" selected="selected">请选择年</option>
+                        <option value="2005">2005</option>
+                        <option value="2004">2004</option>
+                        <option value="2003">2003</option>
+                        <option value="2002">2002</option>
+                        <option value="2001">2001</option>
+                        <option value="2000">2000</option>
+                    </select>
+                    <select name="月">
+                        <option value="请选择月" selected="selected">请选择月</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select name="日">
+                        <option value="请选择日" selected="selected">请选择日</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>所在地区</td>
+                <td>
+                    <input type="text" name="所在地区" value="请输入您的所在地区">
+                </td>
+            </tr>
+            <tr>
+                <td>婚姻状况</td>
+                <td>
+                    <input type="radio" name="婚姻状况" value="未婚" id="yh">
+                    <label for="yh">未婚</label>
+                    <input type="radio" name="婚姻状况" value="已婚" id="wh">
+                    <label for="wh">已婚</label>
+                    <input type="radio" name="婚姻状况" value="离婚" id="lh">
+                    <label for="lh">离婚</label>
+                </td>
+            </tr>
+            <tr>
+                <td>学历</td>
+                <td>
+                    <input type="text" name="学历" value="请输入您的学历">
+                </td>
+            </tr>
+            <tr>
+                <td width="105">喜欢的类型</td>
+                <td>
+                    <input type="checkbox" name="like" value="妩媚的" id="妩媚的"><label for="妩媚的">妩媚的</label>
+                    <input type="checkbox" name="like" value="可爱的" id="可爱的"><label for="可爱的">可爱的</label>
+                    <input type="checkbox" name="like" value="小鲜肉" id="小鲜肉"><label for="小鲜肉">小鲜肉</label>
+                    <input type="checkbox" name="like" value="老腊肉" id="老腊肉"><label for="老腊肉">老腊肉</label>
+                    <input type="checkbox" name="like" value="都喜欢" id="都喜欢"><label for="都喜欢">都喜欢</label>
+                </td>
+            </tr>
+            <tr>
+                <td>自我介绍</td>
+                <td>
+                    <textarea name="自我介绍">自我介绍</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td align="left"><input type="submit" name="免费注册" value="免费注册">
+                    <input type="reset" value="重新填写">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="checkbox" name="enroll" value="agree" id="agree" checked="checked"><label
+                        for="agree">我同意注册条款和会员加入标准</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <a href="landing.html" target="_blank">我是会员，立即登陆</a>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <h3> 我承诺 </h3>
+                    <ul>
+                        <li>年满18岁、单身</li>
+                        <li>抱着严谨的态度</li>
+                        <li>真诚寻找另一半</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

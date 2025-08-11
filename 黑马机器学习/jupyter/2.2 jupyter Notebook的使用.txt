@@ -1,0 +1,20 @@
+1. 界面启动
+注意要进入目录后使用
+jupyter notebook
+
+2. 运行
+shift + enter
+
+3. cell
+一对in和out
+
+4. 快捷键
++ shift + enter 执行本单元代码，并跳转到下一单元
++ ctrl + enter 执行本单元代码，留在本单元
+命令模式下
+Y 切换到code模式
+M 切换到MarkDown模式
+A 在上面添加单元格
+B 在下面添加单元格
+L(大写) 显示行号
+Tab 代码补全 

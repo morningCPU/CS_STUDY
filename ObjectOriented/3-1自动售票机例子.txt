@@ -1,0 +1,4 @@
++   每一个类都应该要有 .cpp 和 .h 两个文件
++   ::解析符
++   <class name>::<function name>
++   ::<function name> 全局函数

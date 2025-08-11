@@ -1,0 +1,9 @@
+# 继承
+```
+class B : public A{
+
+}
+```
++ 父类private的东西子类不能调用
++ protected定义只有自己以及自己的子类可以使用的元素
++ 所有数据都是 private

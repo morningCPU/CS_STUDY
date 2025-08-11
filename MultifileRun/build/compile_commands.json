@@ -1,0 +1,14 @@
+[
+{
+  "directory": "E:/StudyPlan/MultifileRun/build",
+  "command": "D:\\Mg\\mingw64\\bin\\g++.exe   -g -o CMakeFiles\\newfile.dir\\main.cpp.obj -c E:\\StudyPlan\\MultifileRun\\main.cpp",
+  "file": "E:/StudyPlan/MultifileRun/main.cpp",
+  "output": "CMakeFiles/newfile.dir/main.cpp.obj"
+},
+{
+  "directory": "E:/StudyPlan/MultifileRun/build",
+  "command": "D:\\Mg\\mingw64\\bin\\g++.exe   -g -o CMakeFiles\\newfile.dir\\swap.cpp.obj -c E:\\StudyPlan\\MultifileRun\\swap.cpp",
+  "file": "E:/StudyPlan/MultifileRun/swap.cpp",
+  "output": "CMakeFiles/newfile.dir/swap.cpp.obj"
+}
+]

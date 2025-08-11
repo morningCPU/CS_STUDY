@@ -1,0 +1,99 @@
+使用Pandas进行数据探索
+
+1. Pandas的主要方法
+(1)Pandas是基于NumPy的一种工具
+可以使用类似SQL的方式对 .csv、.tsv、xlsx等格式的数据进行处理
+主要使用 Series 和 DataFrame 类
++ Series 
+一维数组加标签
++ DataFrame
+二维数组
+
+(2)使用方法
+载入必要的库
+import numpy as np
+import panda as pd 
+import warnings
+warnings.filterwarnings('ignore') #忽略警告
+# 因为有一些没有必要的警告
+
+通过 read_csv() 方法读取数据
+使用 head() 方法查看前5行数据
++ pycharm里会有折叠
+pd.set_option('display.max_columns', None)   # 不隐藏列
+pd.set_option('display.width', 200)          # 行宽设大点
+让显示不折叠
+df.ship 维度 (x,y) x行y列
+df.columns 列名
+df.info() 直接输出信息
+astype()可以改变属性的类型
+df["001"] = df["001"].astype("int64")
+df.describe()显示数值特征，需要print
++ 通过include参数指定要包含的数据类型
+df.describe(include=["object","bool"])
+value_counts()查看object和bool的特征
++ normalize=True参数显示比例,原本显示个数
+
+(3) 排序
+通过sort_values 和 ascending 实现
+df.sort_values(by=["001","002"],ascending=[True,False])
++ ascending = "False"为降序
+
+(4) 索引和获取数据
+df[df['Churn'] == 1].mean()
+选取值为1的行
+df[df['Churn'] == 1]['Total day minutes'].mean()
+选取值为1的行,只统计'Total day minutes'
+max()
+
+loc通过名称索引,iloc通过数字索引
+df.loc[0:5,'State':'Area code']
+通过loc方法输出0至5行、State州至Areacode区号的数据。
+df.iloc[0:5,0:3]
+通过iloc方法输出0至4行、0至3列的数据。
+
+(5) 应用函数到单元格、列、行
+通过 apply() 实现
++ 应用到每一列
+df.apply(np.max)
++ df[df["State"].apply(lambda state : state[0]=="W")]
+通过 map 实现替换
+d = {'No':False,'Yes':True}
+df['International plan'] = df['International plan'].map(d)
+通过 replace 实现替换
+df = df.replace({'Voice mail plan': d})
+
+(6) 分组
+通过 groupby 实现
+columns_to_show = ['Total day minutes', 'Total eve minutes',
+                   'Total night minutes']
+
+df.groupby(['Churn'])[columns_to_show].describe(percentiles=[])
+
+(7) 汇总表
+通过 pivot_table() 建立透视表
+df.pivot_table(['Total day calls', 'Total eve calls', 'Total night calls'],
+               ['Area code'], aggfunc='mean')
+通过 crosstab() 建立交叉表
+pd.crosstab(df['Churn'], df['International plan'])
+
+(8) 增减DataFrame的行列
+使用 insert() 添加列
+df.insert(loc=len(df.columns), column='Total calls', value=total_calls)
+使用 drop() 删除列和行
+# 移除先前创捷的列
+df.drop(['Total charge', 'Total calls'], axis=1, inplace=True)
+# 删除行
+df.drop([1, 2]).head()
+将相应的索引 ['Total charge', 'Total calls'] 和 axis 参数（1 表示删除列，0 表示删除行，默认值为 0）传给 drop。
+inplace 参数表示是否修改原始 DataFrame （False 表示不修改现有 DataFrame，返回一个新 DataFrame，True 表示修改当前 DataFrame）。
+
+(9) 其他
++ isin([])
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+前缀和 prefix
++   对一维数组：
+    数组前 n 个的和 (其实也是原点到指定点确定的区块)
+    prefix[i] = prefix[i-1] + data[i]
+    
++   对二维数组：
+    二维数组起点 data[1][1] (行列都从1开始) 与指定点 data[i][j] 确定的区块的和
+    prefix[i][j] = prefix[i-1][j] + prefix[i][j-1] - prefix[i-1][j-1] + data[i][j];
+ 

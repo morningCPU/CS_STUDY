@@ -1,0 +1,37 @@
+ONE Based on G++
++   g++ -g <1> -o <2>   
+    //Contines debugging information
+    <1> The address of the file to be compiled
+    <2> The location where the compiled file placed
+    ! Cannot be placed under a folder that does not exist
++   Debugging      
+    Steps:
+        1. click debugging
+        2. click creat launch.json file
+        3. choose C++ (GDB/LLDB)
+        4. choose Start with GDB 
+
+TWO Based on Cmake
++   used to generate a makefile file
++   Steps:
+    1. newly built CMakeLists.txt //Note that the name should be the same
+    2. ctrl + shift + p then select the cmake configutation
+        You can see that a build file is sutomatically created
+    3. enter the terminal
+    4. go to the build folder
+    5. enter cmake ..
+    6. enter mingw32-make.exe
+    7. you can see that a .exe file is created in the build folder
++   debugging   
+    reconfigure launch.json file
+    for example : "program": "${workspaceFolder}/build/newfile.exe",
+
+THREE   Precautions
++   in launch.json,change "externalConsole": flase to "externalConsole": true
+    The program will run on a new page
++   The main function is followed by system("pause");
+    Otherwise,the progream will simply exit
+
+
+
+        
