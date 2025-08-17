@@ -6,26 +6,26 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 /**
- * °¸Àı£ºÁÄÌìÊÒµÄÊµÏÖ £¨·şÎñÆ÷¶Ë£©
+ * æ¡ˆä¾‹ï¼šèŠå¤©å®¤çš„å®ç° ï¼ˆæœåŠ¡å™¨ç«¯ï¼‰
  *
- * @author ÉĞ¹è¹È-ËÎºì¿µ
+ * @author å°šç¡…è°·-å®‹çº¢åº·
  * @create 16:45
  */
 public class ChatServerTest {
-	//Õâ¸ö¼¯ºÏÓÃÀ´´æ´¢ËùÓĞÔÚÏßµÄ¿Í»§¶Ë
+	//è¿™ä¸ªé›†åˆç”¨æ¥å­˜å‚¨æ‰€æœ‰åœ¨çº¿çš„å®¢æˆ·ç«¯
 	static ArrayList<Socket> online = new  ArrayList<Socket>();
 	
 	public static void main(String[] args)throws Exception {
-		//1¡¢Æô¶¯·şÎñÆ÷£¬°ó¶¨¶Ë¿ÚºÅ
+		//1ã€å¯åŠ¨æœåŠ¡å™¨ï¼Œç»‘å®šç«¯å£å·
 		ServerSocket server = new ServerSocket(8989);
 		
-		//2¡¢½ÓÊÕn¶àµÄ¿Í»§¶ËÍ¬Ê±Á¬½Ó
+		//2ã€æ¥æ”¶nå¤šçš„å®¢æˆ·ç«¯åŒæ—¶è¿æ¥
 		while(true){
-			Socket socket = server.accept(); //×èÈûÊ½µÄ·½·¨
+			Socket socket = server.accept(); //é˜»å¡å¼çš„æ–¹æ³•
 			
-			online.add(socket);//°ÑĞÂÁ¬½ÓµÄ¿Í»§¶ËÌí¼Óµ½onlineÁĞ±íÖĞ
+			online.add(socket);//æŠŠæ–°è¿æ¥çš„å®¢æˆ·ç«¯æ·»åŠ åˆ°onlineåˆ—è¡¨ä¸­
 
-			//Ö÷Òª¸ºÔğ»ñÈ¡µ±Ç°socketÖĞµÄÊı¾İ£¬²¢·Ö·¢¸øµ±Ç°ÁÄÌìÊÒµÄËùÓĞµÄ¿Í»§¶Ë¡£
+			//ä¸»è¦è´Ÿè´£è·å–å½“å‰socketä¸­çš„æ•°æ®ï¼Œå¹¶åˆ†å‘ç»™å½“å‰èŠå¤©å®¤çš„æ‰€æœ‰çš„å®¢æˆ·ç«¯ã€‚
 			MessageHandler mh = new MessageHandler(socket);
 			mh.start();//
 		}
@@ -44,39 +44,39 @@ public class ChatServerTest {
 			try {
 				ip = socket.getInetAddress().getHostAddress();
 				
-				//²åÈë£º¸øÆäËû¿Í»§¶Ë×ª·¢¡°ÎÒÉÏÏßÁË¡±
-				sendToOther(ip+"ÉÏÏßÁË");
+				//æ’å…¥ï¼šç»™å…¶ä»–å®¢æˆ·ç«¯è½¬å‘â€œæˆ‘ä¸Šçº¿äº†â€
+				sendToOther(ip+"ä¸Šçº¿äº†");
 				
-				//(1)½ÓÊÕ¸Ã¿Í»§¶ËµÄ·¢ËÍµÄÏûÏ¢
+				//(1)æ¥æ”¶è¯¥å®¢æˆ·ç«¯çš„å‘é€çš„æ¶ˆæ¯
 				InputStream input = socket.getInputStream();
 				InputStreamReader reader = new InputStreamReader(input);
 				BufferedReader br = new BufferedReader(reader);
 				
 				String str;
 				while((str = br.readLine())!=null){
-					//(2)¸øÆäËûÔÚÏß¿Í»§¶Ë×ª·¢
+					//(2)ç»™å…¶ä»–åœ¨çº¿å®¢æˆ·ç«¯è½¬å‘
 					sendToOther(ip+":"+str);
 				}
 				
-				sendToOther(ip+"ÏÂÏßÁË");
+				sendToOther(ip+"ä¸‹çº¿äº†");
 			} catch (IOException e) {
 				try {
-					sendToOther(ip+"µôÏßÁË");
+					sendToOther(ip+"æ‰çº¿äº†");
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}finally{
-				//´ÓÔÚÏßÈËÔ±ÖĞÒÆ³ıÎÒ
+				//ä»åœ¨çº¿äººå‘˜ä¸­ç§»é™¤æˆ‘
 				online.remove(socket);
 			}
 		}
 		
-		//·â×°Ò»¸ö·½·¨£º¸øÆäËû¿Í»§¶Ë×ª·¢xxxÏûÏ¢
+		//å°è£…ä¸€ä¸ªæ–¹æ³•ï¼šç»™å…¶ä»–å®¢æˆ·ç«¯è½¬å‘xxxæ¶ˆæ¯
 		public void sendToOther(String message) throws IOException{
-			//±éÀúËùÓĞµÄÔÚÏß¿Í»§¶Ë£¬Ò»Ò»×ª·¢
+			//éå†æ‰€æœ‰çš„åœ¨çº¿å®¢æˆ·ç«¯ï¼Œä¸€ä¸€è½¬å‘
 			for (Socket on : online) {
 				OutputStream every = on.getOutputStream();
-				//ÎªÊ²Ã´ÓÃPrintStream£¿Ä¿µÄÓÃËüµÄprintln·½·¨£¬°´ĞĞ´òÓ¡
+				//ä¸ºä»€ä¹ˆç”¨PrintStreamï¼Ÿç›®çš„ç”¨å®ƒçš„printlnæ–¹æ³•ï¼ŒæŒ‰è¡Œæ‰“å°
 				PrintStream ps = new PrintStream(every);
 				
 				ps.println(message);
