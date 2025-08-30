@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js</title>
+    <link rel="stylesheet" href="test.css">
+    <script src="test.js" type="text/javascript"></script>
+</head>
+
+<body onkeydown="onkeydownTest()" onkeyup="onkeyupTest()" onkeypress="onkeypressTest(event)">
+    <div id="divf">
+        <div onclick="onclickTest()" class="divs">onclick</div>
+        <div ondblclick="ondblclickTest()" class="divs">ondblclick</div>
+        <div oncontextmenu="oncontextmenuTest()" class="divs">oncontextmenu</div>
+        <div onmousedown="onmousedownTest()" class="divs">onmousedown</div>
+        <div onmouseup="onmouseupTest()" class="divs">onmouseup</div>
+        <div onmousemove="onmousemoveTest()" class="divs">onmousemove</div>
+        <div onmouseover="onmouseenterTest()" class="divs">onmouseenter</div>
+        <div onmouseleave="onmouseleaveTest()" class="divs">onmouseleave</div>
+        <div onmouseover="onmouseoverTest()" class="divs">onmouseover</div>
+        <div onmouseout="onmouseoutTest()" class="divs">onmouseout</div>
+    </div>
+
+    <hr>
+
+    <form action="001.html" method="get" onsubmit="return onsubmitTest(event)">
+        <input type="button" value="button" class="divs" onfocus="onfocusTest()"><br>
+        <input type="button" value="button" class="divs" onblur="onblurTest()"><br>
+        <input type="text" name="message" onchange="onchangeTest()">
+        <input type="submit" value="提交">
+    </form>
+</body>
+
+</html>

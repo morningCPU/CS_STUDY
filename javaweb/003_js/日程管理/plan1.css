@@ -1,0 +1,37 @@
+.ht {
+    text-align: center;
+    color: cadetblue;
+    font-family: 幼圆;
+}
+
+.tab {
+    width: 500px;
+    border: 5px solid cadetblue;
+    margin: 0px auto;
+    border-radius: 5px;
+    font-family: 幼圆;
+}
+
+.ltr td {
+    border: 1px solid powderblue;
+}
+
+.ltrd {
+    width: 332px;
+}
+
+.ipt {
+    border: 0px;
+    width: 50%;
+}
+
+.btn1 {
+    border: 2px solid powderblue;
+    border-radius: 4px;
+    width: 60px;
+    background-color: antiquewhite;
+}
+
+.buttonContainer {
+    text-align: center;
+}
