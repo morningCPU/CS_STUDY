@@ -1,0 +1,23 @@
+//读取文件/写出文件
+FileInputStream fis = new FileInputStream();
+FileOutputStream fos = new FileOutputStream();
+
+//网络编程,需要用字符串
+Socket socket = new Socket();
+InputStream is = socket.getInputStream();
+BufferedReader br = new BufferedReader(new InputStreamReader(is));
+OutputStream os = socket.getOutputStream();
+BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
+String s = br.readLine();
+bw.write(s);
+bw.newLine();
+bw.flush();
+
+//网络编程,需要用字符串(简化)
+Socket socket = new Socket();
+InputStream is = socket.getInputStream();
+Scanner scan = new Scanner(is);
+OutputStream os = socket.getOutputStream();
+PrintStream ps = new PrintStream(os);
+String s = scan.nextLine();
+ps.println(s);
