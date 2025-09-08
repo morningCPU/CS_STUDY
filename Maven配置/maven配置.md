@@ -35,7 +35,7 @@ conf -> setting.xml
 <localRepository>E:\env\maven\apache-maven-3.9.11\repo</localRepository>
 ```
 
-2. 配置国内镜像
+2. 配置国内镜像(最好不要,有些资源没有,反正我用是这样)
 161行
 ```xml
 <mirror>
