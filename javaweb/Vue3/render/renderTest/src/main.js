@@ -1,0 +1,16 @@
+import { createApp } from 'vue'
+// import './style.css'
+import test1 from './components/test1.vue'
+import test2 from './components/test2.vue'
+import test3 from './components/test3.vue'
+import test4 from './components/test4.vue'
+import test5 from './components/test5.vue'
+import test6 from './components/test6.vue'
+import test7 from './components/test7.vue'
+import test8 from './components/test8.vue'
+import test9 from './components/test9.vue'
+import test10 from './components/test10.vue'
+import test11 from './components/test11.vue'
+import test12 from './components/test12.vue'
+
+createApp(test12).mount('#app')

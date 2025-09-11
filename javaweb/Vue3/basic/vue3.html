@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3</title>
+
+    <!-- 导入vue3依赖 -->
+    <script src="vue3.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-text="message" v-bind:style="colorStyle">hello vue3</h1>
+        <h1>{{message}}</h1>
+        <button @click="fun1()">change</button>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            setup() {
+                //定义数据
+                let message = "hello";
+                let colorStyle = { "background-color": "blue" };
+                function fun1() {
+                    alert("hello");
+                }
+
+                //在return中返回的才能关联
+                return {
+                    message, colorStyle, fun1
+                }
+            }
+        })
+
+        //将app对象挂载到指定的元素上
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

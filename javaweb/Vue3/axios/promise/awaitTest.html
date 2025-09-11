@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function fun1() {
+            return 10;
+        }
+        async function fun2() {
+            let res = await fun1();
+            console.log(res);
+        }
+
+        fun2();
+
+        async function fun3() {
+            throw new Error(20);
+        }
+
+        async function fun4() {
+            let res = await fun3();
+            console.log(res);
+        }
+
+        fun4();
+    </script>
+</body>
+
+</html>

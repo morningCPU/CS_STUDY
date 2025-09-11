@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //resolve 函数,在回调函数中如果使用resolve方法,promise状态会由Pending变为Resolved
+        //reject 函数,在回调函数中如果使用reject方法,promise状态会由Pending变为Rejected
+        let promise = new Promise((resolve, reject) => {
+            //回调函数
+            console.log("function")
+            resolve("abc");
+        });
+
+        console.log("between1");
+
+        let promise2 = promise.then(
+            //promise状态发生改变时执行的代码
+            //Pending -> Resolved
+            function (s) {
+                console.log("resolved");
+                console.log(s);
+            },
+            //Pending -> Rejected
+            function () {
+                console.log("rejected");
+            }
+        )
+
+        console.log("between2");
+
+        promise2.catch({
+            function() {
+                //当promse状态时reject或者promise出现异常时
+            }
+        })
+
+        // promise.then(
+        //     function(){
+        //         console.log("resolved");
+        //     }
+        // ).catch(
+        //     function(){
+        //         console.log("rejected");
+        //     }
+        // )
+
+    </script>
+</body>
+
+</html>
