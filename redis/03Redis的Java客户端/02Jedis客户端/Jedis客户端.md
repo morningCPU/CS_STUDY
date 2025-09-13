@@ -1,6 +1,8 @@
 # Jedis客户端
 ## 1. 快速入门
 Jedis官网 https://github.com/redis/jedis
+使用manue,记得配置
+
 1. 引入依赖 （dependencies中）
 ```xml
 <dependency>

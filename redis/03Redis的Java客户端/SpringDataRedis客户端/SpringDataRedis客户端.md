@@ -1,11 +1,13 @@
 # SpringDataRedis
 ## 1. 简介
 + 提供 RedisTemplate 统一API来操作Redis
++ 使用spring
 
 ***
 
 ## 2. 快速入门
-1. 引入依赖
+1. .mvm,.gitignore,HTLP.md.mvnw.mvnw.cmd可以删去
+2. 引入依赖
 ```xml
 <!-- redis依赖 -->
 <dependency>
@@ -19,6 +21,9 @@
 </dependency>
 ```
 2. 配置redis
+
+main->resources->application 可以改为yaml配置文件
+
 ```yaml
 spring:
   data:
