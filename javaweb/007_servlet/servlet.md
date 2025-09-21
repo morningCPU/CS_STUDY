@@ -242,15 +242,62 @@ pw.writer(s);
 张三找李四,李四找王五
 + 响应重定向通过 HttpServletResponse 实现
 张三找李四,李四叫张三去找王五
+
 ### 16.1 请求转发
 + 请求转发时,请求和响应对象一直向下传递,只有一对
 + 参数可以传递
 + 客户端不知道这个传递行为
 + 客户端只产生一次请求
++ 可以用于访问WEB_INF资源
+```
+@WebServlet("/servleta")
+public class ServletA extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("servletA running");
+
+        //请求转发
+        //获得请求转发器
+        //注意这个servletb不是类是地址
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/servletb");
+        requestDispatcher.forward(req,resp);
+    }
+}
+```
 
 ### 16.2 响应重定向
+```
+@WebServlet("/servletc")
+public class ServletC extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("servletC running");
+        //响应重定向
+        resp.sendRedirect("servletd");
+    }
+}
+```
 
-## 乱码问题
+***
+
+## 17. 路径问题
+### 17.1 前端相对路径
+通过客户端进行解析路径,在当前资源的所在路径后,拼接目标资源的路径
++ 注意请求转发的情况下,原本路径是没有变的
+### 17.2 前端绝对路径
++ 注意不同的项目中出发位置可能不同
+绝对路径和上下文有关,但是项目的上下文可能发生改变
+1. 可以采用对相对路径改进的方法
+在<head> 标签中加上
+```
+<base href="/demo/">
+```
+页面中所有不加修饰(没有./或者../)的相对路径前会自动加上href中的内容
+2. 不设置文件上下文
+### 17.2 后端绝对路径
+请求转发不需要添加项目上下文,直接设置为 `/`
+
+## 18. 乱码问题
 ![alt text](image-4.png)
 ### 1 HTML乱码问题
 ### 2 Tomcat控制台乱码
