@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="but">button</button>
+    <script>
+        class Person {
+            //参数
+            name;
+            age;
+            //get set方法
+            get name() {
+                return this.name;
+            }
+            set name(name) {
+                this.name = name;
+            }
+            //实例方法
+            eat = () => {
+                console.log("eating");
+            }
+            //静态方法
+            static sum = (a, b) => {
+                return a + b;
+            }
+            //构造器
+            constructor(name = "morning", age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+        class Student extends Person {
+            id;
+            constructor(name, age, id) {
+                super(name, age);
+                this.id = id;
+            }
+        }
+
+        let person = new Person();
+        person.name = "morning";
+        console.log(person.name)
+        let obj = document.querySelector("#but");
+        obj.onclick = person.eat;
+        let a = 1;
+        let b = 2;
+        console.log(Person.sum(a, b))
+        let student = new Student();
+        console.log(student.name);
+
+        let arr = [1, 2, 3];
+        let arr_copy = JSON.parse(JSON.stringify(arr));
+        console.log(arr_copy);
+
+    </script>
+</body>
+
+</html>
