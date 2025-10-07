@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="but"></button>
+    <input type="text" id="showArea">
+    <script>
+        let but = document.getElementById("but");
+        but.onclick = () => {
+            // 实例化一个XMLHttpRequest
+            var xmlHttpRequest = new XMLHttpRequest();
+            // 设置xmlHttpRequest对象的回调函数
+            xmlHttpRequest.onreadystatechange = () => {
+                if (xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200) {
+                    alter("后端成功响应");
+                    let obj = document.getElementById("showArea");
+                    obj.value = xmlHttpRequest.responseText;
+                    console.log(xmlHttpRequest.responseText);
+                }
+            }
+            xmlHttpRequest.open("get", "/servletA?userName=changsan");
+            xmlHttpRequest.send();
+        }
+    </script>
+</body>
+
+</html>

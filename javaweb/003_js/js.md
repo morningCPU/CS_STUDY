@@ -191,6 +191,7 @@ public void test2() throws JsonProcessingException {
 `var arr = new Array(len)`
 `var arr = new Array(num1,num2)`
 `var arr = [num1,num2]`
+
 + concat
 合并并创建一个新的数组，不改变原来的数组
 + pop
@@ -240,7 +241,7 @@ public void test2() throws JsonProcessingException {
 + onsearch 向<input='search'>中输入文本时
 + onselect
 + onsubmit
-onsubmi要写在<form>中
+onsubmit要写在<form>中
 可以使用 `event.preventDefault()` 阻止组件的默认行为
 
 ***
